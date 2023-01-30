@@ -28,32 +28,80 @@ public class BankTester {
 
                 switch (command) {
                     case (1):
+                        addAccount(banko);
                         break;
                     case (2):
+                        deposit(banko);
                         break;
                     case (3):
+                        withdraw(banko);
                         break;
                     case (4):
+                        getBal(banko);
                         break;
                     case (5):
+                        highBal(banko);
                         break;
                     case (6):
+                        lowBal(banko);
                         break;
                     case (7):
+                        System.out.println("Bye!");
                         run = false;
                         break;
                     default:
+                        System.out.println("Please use only numbers 1-7 to select a command from the menu.\n\n");
                         break;
                 }
             } catch (InputMismatchException e1) {
-                System.out.println("Please use numbers 1-7 to select a command from the menu.");
+                System.out.println("Please use numbers 1-7 to select a command from the menu.\n\n");
             }
         }
     }
 
-    public static void addAccount(Scanner input) {
-        int acc;
-        System.out.println("What is the bank account number?");
+    public static void addAccount(Bank bank){
+        int accNum = 0;
+        Scanner input = new Scanner(System.in);
+        try {
+            System.out.println("What is the bank account number?");
+            accNum = input.nextInt();
+        }
+        catch (InputMismatchException e2) {
+            System.out.println("Account number can only be integers.");
+        }
+
+        BankAccount b = new BankAccount(accNum);
+        System.out.println("Adding account number " + accNum);
+        bank.addAccount(b);
+
+    }
+
+    public static void deposit(Bank bank) {
+        Scanner input = new Scanner(System.in);
+        int accNum = 0;
+        double amt = 0;
+        try {
+            System.out.print("\nWhat is the account number of the account you wish to deposit to?");
+            accNum = input.nextInt();
+        }
+        catch (InputMismatchException e2) {
+            System.out.println("Account number can only be integers.");
+        }
+    }
+
+    public static void withdraw(Bank bank) {
+
+    }
+
+    public static void getBal(Bank bank) {
+
+    }
+
+    public static void highBal(Bank bank) {
+
+    }
+
+    public static void lowBal(Bank bank) {
 
     }
 }
