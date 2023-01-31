@@ -3,15 +3,28 @@ import java.util.ArrayList;
 public class Bank {
     private ArrayList<BankAccount> accounts;
 
+    /**
+     * Constructor
+     */
     public Bank() {
 
         accounts = new ArrayList<BankAccount>();
     }
 
+
+    /**
+     * Adds an account to the bank's ArrayList
+     * @param a is the account to be added
+     */
     public void addAccount(BankAccount a) {
         accounts.add(a);
     }
 
+
+    /**
+     * Gets total balance stored in bank across all accounts
+     * @return the total balance
+     */
     public double getTotalBalance() {
         double total = 0;
         for (BankAccount a : accounts) {
@@ -69,6 +82,10 @@ public class Bank {
         return largest;
     }
 
+    /**
+     * Get the account with the smallest balance stored
+     * @return the account with the smallest balance
+     */
     public BankAccount getMinimum() {
         if(accounts.size() == 0)
             throw new BankException("No accounts exist.");
@@ -82,6 +99,12 @@ public class Bank {
         }
         return smallest;
     }
+
+    /**
+     * Makes a withdrawal from a certain account in the bank
+     * @param account is a BankAccount in the bank's ArrayList
+     * @param amount is the amount to be withdrawn
+     */
     public void withdraw(BankAccount account, double amount) {
         for (BankAccount a : accounts) {
             if (a.equals(account)) {
@@ -90,6 +113,11 @@ public class Bank {
         }
     }
 
+    /**
+     * Makes a deposit to a certain account in the bank
+     * @param account is a BankAccount in the bank's ArrayList
+     * @param amount is the amount to be deposited
+     */
     public void deposit(BankAccount account, double amount) {
         for (BankAccount a : accounts) {
             if (a.equals(account)) {
