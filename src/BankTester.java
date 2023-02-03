@@ -10,7 +10,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BankTester {
-    public static void main(String[] args) throws BankAccountException, BankException{
+    public static void main(String[] args) {
         Bank banko = new Bank();
 
         boolean run = true;
@@ -59,6 +59,12 @@ public class BankTester {
                 }
             } catch (InputMismatchException e1) {
                 System.out.println("Please use numbers 1-7 to select a command from the menu.\n\n");
+            }
+            catch (BankException fdsf) {
+                System.out.println(fdsf.getMessage());
+            }
+            catch (BankAccountException fdsf) {
+                System.out.println(fdsf.getMessage());
             }
         } while (run);
     }
@@ -153,6 +159,8 @@ public class BankTester {
         Scanner input = new Scanner(System.in);
         int accNum = 0;
         double amt = 0;
+
+
         try {
             System.out.print("\nWhat is the account number of the account you wish to deposit to?");
             accNum = input.nextInt();
@@ -160,7 +168,9 @@ public class BankTester {
             System.out.println("Account number can only be integers.");
         }
 
-
+        BankAccount acc = bank.find(accNum);
+        amt = acc.getBalance();
+        System.out.println("Balance is $" + amt);
     }
 
 
